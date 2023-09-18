@@ -1,16 +1,12 @@
-const os = require('os')
+const { readFileSync, writeFileSync } = require('fs')
+console.log('start')
+const first = readFileSync('./content/first.txt', 'utf8')
+const second = readFileSync('./content/second.txt', 'utf8')
 
-// info about current user
-const user = os.userInfo()
-console.log(user)
-
-// method returns the system uptime in seconds
-console.log(`The System Uptime is ${os.uptime()} seconds`)
-
-const currentOS = {
-  name: os.type(),
-  release: os.release(),
-  totalMem: os.totalmem(),
-  freeMem: os.freemem(),
-}
-console.log(currentOS)
+writeFileSync(
+  './content/result-sync.txt',
+  `Here is the result : ${first}, ${second}`,
+  { flag: 'a' }
+)
+console.log('done with this task')
+console.log('starting the next one')
